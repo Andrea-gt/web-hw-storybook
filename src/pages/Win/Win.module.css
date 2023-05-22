@@ -1,0 +1,14 @@
+.container {
+    width: 75vh;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    line-height: 25px;
+}
+
+.container button  {
+    width: 100px;
+}

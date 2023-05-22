@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800&display=swap');
+
+li {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    padding: 20px;
+    list-style: none;
+    width: 75px;
+    height: 10px;
+    border: 2px solid #FFF;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+.day {
+    font: inherit;
+    font-family: Raleway, sans-serif;
+    color: #FFF;
+    background-image: url(/grass-sprite.png);
+    background-size: 150px; 
+}
+
+.night {
+    font: inherit;
+    font-family: Raleway, sans-serif;
+    color: #FFF;
+    background-image: url(/dark-grass-sprite.png);
+    background-size: 150px; 
+}
+
+li[disabled] {
+    filter: grayscale(100%);
+}

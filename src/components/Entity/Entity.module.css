@@ -1,0 +1,90 @@
+.p.kagome.front {
+    width: 32px;
+    height: 32px;
+    background-image: url(/kagome-sprites.png);
+    background-position: -125px -9px;
+}
+
+.p.kagome.back {
+    width: 32px;
+    height: 32px;
+    background-image: url(/kagome-sprites.png);
+    background-position: -125px -41px;
+}
+
+.p.kagome.left {
+    width: 32px;
+    height: 32px;
+    background-image: url(/kagome-sprites.png);
+    background-position: -60px -41px;
+}
+
+.p.kagome.right {
+    width: 32px;
+    height: 32px;
+    background-image: url(/kagome-sprites.png);
+    background-position: -60px -41px;
+    transform: scaleX(-1); 
+}
+
+.p.inuyasha.front {
+    width: 32px;
+    height: 32px;
+    background-image: url(/inuyasha-sprites.png);
+    background-position: -125px -8px;
+}
+
+.p.inuyasha.back {
+    width: 32px;
+    height: 32px;
+    background-image: url(/inuyasha-sprites.png);
+    background-position: -125px -40px;
+}
+
+.p.inuyasha.left {
+    width: 32px;
+    height: 32px;
+    background-image: url(/inuyasha-sprites.png);
+    background-position: -61px -40px;
+}
+
+.p.inuyasha.right {
+    width: 32px;
+    height: 32px;
+    background-image: url(/inuyasha-sprites.png);
+    background-position: -61px -40px;
+    transform: scaleX(-1); 
+}
+
+.g {
+    width: 10px;
+    height: 10px;
+    background-image: url(/kagome-sprites.png);
+    background-position: -171px -120px;
+}
+
+.t {
+    width: 50px;
+    height: 50px;
+    background-image: url(/obstacles-sprites.png);
+    background-position: -220px -416px;
+    transform: scaleX(-1); 
+}
+
+.w {
+    width: 17px;
+    height: 18px;
+    background-image: url(/obstacles-sprites.png);
+    background-position: -15.6px -31px;
+}
+
+.l {
+    width: 100px;
+    height: auto;
+    background-image: url(/log.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+  
+
+

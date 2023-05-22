@@ -1,0 +1,15 @@
+.maze {
+    padding: 20px;
+    display: grid;
+    background-image: url(/grass-sprite.png);
+    background-size: 150px; 
+    background-repeat: repeat; 
+    border: 2px solid #000; 
+}
+
+.darkMask {
+    background-image: url(/grass-sprite.png);
+    background-size: 150px; 
+    background-repeat: repeat; 
+}
+  
