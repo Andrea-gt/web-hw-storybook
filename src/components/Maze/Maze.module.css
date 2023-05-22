@@ -8,7 +8,7 @@
 }
 
 .darkMask {
-    background-image: url(/grass-sprite.png);
+    background-image: url(/dark-grass-sprite.png);
     background-size: 150px; 
     background-repeat: repeat; 
 }

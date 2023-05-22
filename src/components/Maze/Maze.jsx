@@ -1,35 +1,46 @@
-import React, { useState, useEffect } from "react";
-import Entity from "@components/Entity";
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import styles from './Maze.module.css';
-import { navigate } from "../../pages";
+import { navigate } from '../../pages';
+import Entity from '../Entity/index';
 
-const Maze = ({ json, w, h, daytime, character}) => {
+function Maze({
+  json, w, h, daytime, character,
+}) {
   const mazeClass = `${styles.maze} ${daytime === 'night' ? styles.darkMask : ''}`;
   const [playerPosition, setPlayerPosition] = useState({ x: 1, y: 1 });
   const [playerDirection, setPlayerDirection] = useState('front');
-  const [mazeJson, setMazeJson] = useState(json); 
+  const [mazeJson, setMazeJson] = useState(json);
 
   const handleKeyDown = (event) => {
     const { key } = event;
     const { x, y } = playerPosition;
 
+    const isPositionValid = (newX, newY) => {
+      const col = mazeJson[newY][newX];
+      if (col === ' ' || col === 'g') {
+        return true;
+      }
+      return false;
+    };
+
     let newX = x;
     let newY = y;
 
     switch (key) {
-      case "ArrowRight":
+      case 'ArrowRight':
         setPlayerDirection('right');
         newX = x + 1;
         break;
-      case "ArrowLeft":
+      case 'ArrowLeft':
         setPlayerDirection('left');
         newX = x - 1;
         break;
-      case "ArrowUp":
+      case 'ArrowUp':
         setPlayerDirection('back');
         newY = y - 1;
         break;
-      case "ArrowDown":
+      case 'ArrowDown':
         setPlayerDirection('front');
         newY = y + 1;
         break;
@@ -42,29 +53,19 @@ const Maze = ({ json, w, h, daytime, character}) => {
       const newMazeJson = [...mazeJson];
 
       if (newMazeJson[newY][newX] === 'g') {
-        console.log('g')
-        navigate('win')
+        navigate('win');
       }
 
-      newMazeJson[playerPosition.y][playerPosition.x] = ' ';
+      newMazeJson[y][x] = ' ';
       newMazeJson[newY][newX] = 'p';
       setMazeJson(newMazeJson);
-
     }
   };
 
-  const isPositionValid = (x, y) => {
-      const col = mazeJson[y][x];
-      if (col === ' '|| col === 'g') {
-        return true;
-      }
-    return false;
-  };
-
   useEffect(() => {
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener('keydown', handleKeyDown);
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, [playerPosition]);
 
@@ -78,29 +79,35 @@ const Maze = ({ json, w, h, daytime, character}) => {
         height: `${(h + h + 1) * 50}px`,
       }}
     >
-      {mazeJson.map((row, ri) =>
-        row.map((col, ci) => {
-          const key = `${ri}-${ci}`;
-          switch (col) {
-            case 'p':
-              return <Entity key={key} letter='p' character={character} direction={playerDirection} />;
-            case 'g':
-              return <Entity key={key} letter='g' />;
-            case '+':
-              return <Entity key={key} letter='t' />;
-            case '-':
-              return <Entity key={key} letter='w' />;
-            case '|':
-              return <Entity key={key} letter='l' />;
-            case ' ':
-              return <Entity key={key} letter=' ' />;
-            default:
-              return null;
-          }
-        })
-      )}
+      {mazeJson.map((row, ri) => row.map((col, ci) => {
+        const key = `${ri}-${ci}`;
+        switch (col) {
+          case 'p':
+            return <Entity key={key} letter="p" character={character} direction={playerDirection} />;
+          case 'g':
+            return <Entity key={key} letter="g" />;
+          case '+':
+            return <Entity key={key} letter="t" />;
+          case '-':
+            return <Entity key={key} letter="w" />;
+          case '|':
+            return <Entity key={key} letter="l" />;
+          case ' ':
+            return <Entity key={key} letter=" " />;
+          default:
+            return null;
+        }
+      }))}
     </div>
   );
+}
+
+Maze.propTypes = {
+  json: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
+  w: PropTypes.number.isRequired,
+  h: PropTypes.number.isRequired,
+  daytime: PropTypes.string.isRequired,
+  character: PropTypes.string.isRequired,
 };
 
 export default Maze;

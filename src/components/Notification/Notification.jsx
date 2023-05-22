@@ -1,15 +1,16 @@
-import React, { useState } from 'react'
-import styles from './Notification.module.css'
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import styles from './Notification.module.css';
 
-const Notification = ({
+function Notification({
   children,
   type,
-  dismissable
-}) => {
-  const [show, setShow] = useState(true)
+  dismissable,
+}) {
+  const [show, setShow] = useState(true);
 
   if (!show) {
-    return null
+    return null;
   }
 
   return (
@@ -23,7 +24,17 @@ const Notification = ({
       }
       {children}
     </div>
-  )
+  );
 }
 
-export default Notification
+Notification.propTypes = {
+  children: PropTypes.node.isRequired,
+  type: PropTypes.string.isRequired,
+  dismissable: PropTypes.bool,
+};
+
+Notification.defaultProps = {
+  dismissable: true,
+};
+
+export default Notification;
